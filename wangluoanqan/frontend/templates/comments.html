@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Comments - XSS Challenge</title>
+</head>
+<body>
+    <h1>Comments Section</h1>
+    <form method="post">
+        <textarea name="comment" placeholder="Enter comment"></textarea><br>
+        <button type="submit">Post</button>
+    </form>
+    <hr>
+    <h2>All Comments (Safe)</h2>
+    {% for c in comments %}
+    <div>{{ c }}</div> <!-- Jinja2 auto-escapes, no |safe filter -->
+    {% endfor %}
+    <a href="{{ url_for('dashboard') }}">Back</a>
+</body>
+</html>
